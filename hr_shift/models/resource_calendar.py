@@ -7,8 +7,6 @@ import pytz
 from odoo import api, models
 from odoo.tools import groupby
 
-from odoo.addons.resource.models.utils import string_to_datetime
-
 
 class ResourceCalendar(models.Model):
     _inherit = "resource.calendar"
@@ -58,8 +56,8 @@ class ResourceCalendar(models.Model):
                             or shift.end_time.date() == end.date()
                         )
                     ]
-                    start_time = string_to_datetime(shift.start_time).astimezone(tz)
-                    end_time = string_to_datetime(shift.end_time).astimezone(tz)
+                    start_time = pytz.utc.localize(shift.start_time).astimezone(tz)
+                    end_time = pytz.utc.localize(shift.end_time).astimezone(tz)
                     intervals_to_add.append((start_time, end_time, shift))
                 res[resource.id]._items = [
                     x for x in resource_intervals if x not in intervals_to_remove
