@@ -148,10 +148,12 @@ class ShiftPlanning(models.Model):
         )
         shifts._generate_shift_lines()
         self.state = "assignment"
+        return True
 
     def regenerate_shifts(self):
         self.shift_ids.unlink()
         self.generate_shifts()
+        return True
 
     def copy_to_planning(self):
         action = self.env["ir.actions.act_window"]._for_xml_id(
@@ -304,6 +306,7 @@ class ShiftPlanningShift(models.Model):
 
     def action_toggle_reviewed(self):
         self.reviewed = not self.reviewed
+        return True
 
     def action_view_shift_details(self):
         action = self.env["ir.actions.act_window"]._for_xml_id(
@@ -498,3 +501,4 @@ class ShiftPlanningLine(models.Model):
 
     def action_unassign_shift(self):
         self.template_id = False
+        return True
