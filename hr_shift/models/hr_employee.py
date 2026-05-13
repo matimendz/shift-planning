@@ -1,5 +1,7 @@
 # Copyright 2024 Tecnativa - David Vidal
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+from datetime import datetime
+
 from odoo import api, fields, models
 
 
@@ -36,8 +38,8 @@ class HrEmployee(models.Model):
         """Current shift for a given employee if any"""
         today = fields.Date.today()
         now = fields.Datetime.now()
-        min_time = fields.datetime.combine(today, now.min.time())
-        max_time = fields.datetime.combine(today, now.max.time())
+        min_time = datetime.combine(today, now.min.time())
+        max_time = datetime.combine(today, now.max.time())
         for employee in self:
             employee.current_shift_id = employee._shift_of_date(min_time, max_time)
 

@@ -476,11 +476,11 @@ class ShiftPlanningLine(models.Model):
         if not (self.start_time and self.end_time and self.employee_id):
             return False
         local_tz = pytz.timezone(self.template_id.tz or self.env.user.tz)
-        start_time = fields.datetime.combine(
+        start_time = datetime.combine(
             pytz.utc.localize(self.start_time).astimezone(local_tz),
             self.start_time.min.time(),
         )
-        end_time = fields.datetime.combine(
+        end_time = datetime.combine(
             pytz.utc.localize(self.end_time).astimezone(local_tz),
             self.end_time.max.time(),
         )
