@@ -3,8 +3,8 @@
 from odoo import api, fields, models
 
 
-class HrEmployeeBase(models.AbstractModel):
-    _inherit = "hr.employee.base"
+class HrEmployee(models.Model):
+    _inherit = "hr.employee"
 
     shift_planning = fields.Boolean(
         help="Generate shifts for this employee in the shifts plannings",
@@ -45,6 +45,6 @@ class HrEmployeeBase(models.AbstractModel):
         # Get shift info if available
         employees_in_current_shift = self.filtered("current_shift_id")
         others = super(
-            HrEmployeeBase, (self - employees_in_current_shift)
+            HrEmployee, (self - employees_in_current_shift)
         )._get_employee_working_now()
         return others + employees_in_current_shift.ids
