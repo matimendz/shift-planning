@@ -338,18 +338,17 @@
                     string="My shifts"
                     domain="[('employee_id.user_id', '=', uid)]"
                 />
-                <group string="Group By">
-                    <filter
-                        name="group_template"
-                        string="Template"
-                        context="{'group_by':'template_id'}"
-                    />
-                    <filter
-                        name="group_employee"
-                        string="Employee"
-                        context="{'group_by':'employee_id'}"
-                    />
-                </group>
+                <separator/>
+                <filter
+                    name="group_template"
+                    string="Template"
+                    context="{'group_by':'template_id'}"
+                />
+                <filter
+                    name="group_employee"
+                    string="Employee"
+                    context="{'group_by':'employee_id'}"
+                />
             </search>
         </field>
     </record>
