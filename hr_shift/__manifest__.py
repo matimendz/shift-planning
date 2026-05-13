@@ -21,7 +21,7 @@
     ],
     "assets": {
         "web.assets_backend": [
-            "/hr_shift/static/src/js/**/*.js",
+            "/hr_shift/static/src/js/generate_planning.esm.js",
             "/hr_shift/static/src/scss/shift.scss",
             "/hr_shift/static/src/xml/generate_planning_views.xml",
         ],
