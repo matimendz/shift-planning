@@ -336,7 +336,7 @@ class ShiftPlanningLine(models.Model):
     start_hour = fields.Float(string="Start hour", related="template_id.start_time")
     end_hour = fields.Float(string="End hour", related="template_id.end_time")
     color = fields.Integer(related="template_id.color")
-    planning_id = fields.Many2one(related="shift_id.planning_id")
+    planning_id = fields.Many2one(related="shift_id.planning_id", store=True)
     employee_id = fields.Many2one(related="shift_id.employee_id", store=True)
     resource_id = fields.Many2one(related="employee_id.resource_id", store=True)
     day_number = fields.Selection(string="Day", selection=WEEK_DAYS_SELECTION)
