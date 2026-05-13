@@ -275,7 +275,7 @@
                                 <span t-else="" class="fa fa-square-o" />
                             </a>
                         </aside>
-                        <main t-if="record.line_ids.raw_value">
+                        <main t-if="record.lines_data.raw_value">
                             <div
                                 class="d-flex justify-content-between align-items-center gap-2"
                             >
